@@ -25,7 +25,6 @@ public class Exit extends Sprite{
 		try {
 			image = ImageIO.read(new File("image/06.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

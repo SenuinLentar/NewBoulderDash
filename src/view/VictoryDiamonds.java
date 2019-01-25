@@ -1,7 +1,7 @@
 package view;
 
 import view.element.Diamond;
-import view.element.ISprite;
+import view.viewInterface.ISprite;
 import view.viewInterface.IVictoryDiamonds;
 
 /**
@@ -15,7 +15,7 @@ public class VictoryDiamonds implements IVictoryDiamonds {
 	 */
 	public ISprite[][] setDirtAndBackgroundToDiamond(ISprite[][] sprites, final int SET_SIZE) {		
 		int ligne = 0, colonne = 0, x = 0, y = 0;
-		for (ISprite sousSpit[] : sprites) {
+		for (ISprite[] sousSpit : sprites) {
 			x = 0;
 			colonne = 0;
 			for (ISprite spit : sousSpit) {

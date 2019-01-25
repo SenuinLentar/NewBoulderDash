@@ -46,6 +46,6 @@ public class EndTheGame {
 		panel.update();
 		JOptionPane.showMessageDialog(null, "Victory!");
 		window.dispose();
-		launchDBQueries.launchScoreQuery(panel.getScore());;
+		launchDBQueries.launchScoreQuery(panel.getScore());
 	}
 }

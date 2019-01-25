@@ -2,8 +2,6 @@ package view.viewInterface;
 
 import java.awt.Graphics;
 
-import view.element.ISprite;
-
 public interface IMapMaker {
 	/**
 	 * Fill a Sprite table in terms of a SpriteType table

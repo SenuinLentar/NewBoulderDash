@@ -11,9 +11,9 @@ import view.Audio;
 import view.MapMaker;
 import view.SpriteType;
 import view.VictoryDiamonds;
-import view.element.ISprite;
 import view.move.Move;
 import view.viewInterface.IPanel;
+import view.viewInterface.ISprite;
 
 public class Controller implements IController, Observer {
 	private UserOrder stackOrder = UserOrder.NOOP;
@@ -137,7 +137,6 @@ public class Controller implements IController, Observer {
 			try {
 				directionControl();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

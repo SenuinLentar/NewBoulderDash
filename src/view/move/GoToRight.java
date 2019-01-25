@@ -6,20 +6,18 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import view.element.Background;
-import view.element.ISprite;
 import view.element.Monster;
 import view.element.Rock;
 import view.viewInterface.IAudio;
 import view.viewInterface.IPanel;
+import view.viewInterface.ISprite;
 
 public class GoToRight extends Move {
 
 	public GoToRight(ISprite[][] sprites, int SET_SIZE, IPanel panel) {
 		super(sprites, SET_SIZE, panel);
-		// TODO Auto-generated constructor stub
 	}
 
-	
 	/**
 	 * Tries to move the character right, if he cross a diamond he will collect
 	 * it, if it's an opened exit he will win, if it's a monster he will die, if
@@ -36,7 +34,6 @@ public class GoToRight extends Move {
 		try {
 			image = ImageIO.read(new File("image/d1.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if (nextToDiamond(sprites[ligne][colonne + 1])) {

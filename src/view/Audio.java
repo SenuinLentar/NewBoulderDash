@@ -12,16 +12,16 @@ public class Audio implements IAudio{
 	private Clip clip;
  /**
   * Play a sound in wav formats
-  * @param Sound
+  * @param sound
   * 			String which contain the path to the sound
   * 
   *@param gain
   *				the gain of the sound
   */
-	 public  void playSound(File Sound, float gain) {
+	 public  void playSound(File sound, float gain) {
 		try{	
 		clip = AudioSystem.getClip();
-		clip.open(AudioSystem.getAudioInputStream(Sound));
+		clip.open(AudioSystem.getAudioInputStream(sound));
 		clip.start();
 		FloatControl volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
 		volume.setValue(gain);

@@ -1,4 +1,4 @@
-package view.element;
+package view.viewInterface;
 
 import java.awt.Image;
 

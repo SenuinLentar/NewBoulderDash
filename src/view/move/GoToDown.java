@@ -6,10 +6,10 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import view.element.Background;
-import view.element.ISprite;
 import view.element.Monster;
 import view.viewInterface.IAudio;
 import view.viewInterface.IPanel;
+import view.viewInterface.ISprite;
 
 public class GoToDown extends Move {
 
@@ -22,7 +22,6 @@ public class GoToDown extends Move {
 	 */
 	public GoToDown(ISprite[][] sprites, int SET_SIZE, IPanel panel) {
 		super(sprites, SET_SIZE, panel);
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -42,7 +41,6 @@ public class GoToDown extends Move {
 		try {
 			image = ImageIO.read(new File("image/11.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if (nextToDiamond(sprites[ligne + 1][colonne])) {

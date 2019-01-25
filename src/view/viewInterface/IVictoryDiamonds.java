@@ -1,7 +1,5 @@
 package view.viewInterface;
 
-import view.element.ISprite;
-
 public interface IVictoryDiamonds {
 	/**
 	 * transform all the dirt and the background in to diamonds

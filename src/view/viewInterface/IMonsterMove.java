@@ -1,7 +1,5 @@
 package view.viewInterface;
 
-import view.element.ISprite;
-
 public interface IMonsterMove {
 	/**
 	 * Make the monsters move

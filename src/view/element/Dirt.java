@@ -25,7 +25,6 @@ public class Dirt extends Sprite{
 		try {
 			image = ImageIO.read(new File("image/02.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

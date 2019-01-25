@@ -17,7 +17,6 @@ public class DAOConnector extends LaunchDBQuery implements IDAOConnector {
 //	private final String LOGIN = "root";
 //	private final String PASSWORD = "maxime";
 	
-	private Connection connection = null;
 	private int choice = 0;
 	
 	/**
@@ -27,21 +26,23 @@ public class DAOConnector extends LaunchDBQuery implements IDAOConnector {
 	 */
 	public DAOConnector(int level, String name) {
 		super(level, name);
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
 	 * Connection to the remote database
 	 */
 	public void connection() {
+		
 		try {
+			Connection connection = null;
 			Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection(URL, LOGIN, PASSWORD);
 			statement = connection.createStatement();
+			
+			connection.close();
 		} catch (final ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

@@ -1,13 +1,16 @@
 package model;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Scanner;
 
 import model.modelInterface.IMapQuery;
 
-public class MapQuery extends LaunchDBQuery implements IMapQuery{
-	
+public class MapQuery extends LaunchDBQuery implements IMapQuery {
+
 	/**
 	 * Constructor of MapQuery
 	 * 
@@ -15,8 +18,6 @@ public class MapQuery extends LaunchDBQuery implements IMapQuery{
 	 */
 	public MapQuery(int level, String name) {
 		super(level, name);
-		
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -34,7 +35,6 @@ public class MapQuery extends LaunchDBQuery implements IMapQuery{
 				break;
 			case 3:
 				result = statement.executeQuery("call `procédure_LV3`");
-				//result = statement.executeQuery("call `test`");
 				break;
 			case 4:
 				result = statement.executeQuery("call `procédure_LV4`");
@@ -47,14 +47,15 @@ public class MapQuery extends LaunchDBQuery implements IMapQuery{
 				break;
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return result;
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see model.IDAOTest#setQueryIntoTable()
 	 */
 	public void setMapQueryIntoTable(ResultSet result, char[][] tab) {
@@ -67,19 +68,46 @@ public class MapQuery extends LaunchDBQuery implements IMapQuery{
 				ligne++;
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
 
-		/*
-		 * Show the map in the console in the form of characters
-		 * 
-		 */
-		// for (char sousTab[] : tab){
-		// for(char str : sousTab){
-		// System.out.print(str);
-		// }
-		// System.out.println("");
-		// }
+	public void setMapQueryIntoTable(int level, char[][] tab) throws FileNotFoundException {
+		String filePath;
+		switch (level) {
+		case 1:
+			filePath = "image/lvUN.txt";
+			break;
+		case 2:
+			filePath = "image/lvDEUX.txt";
+			break;
+		case 3:
+			filePath = "image/lvTROIS.txt";
+			break;
+		case 4:
+			filePath = "image/lvQUATRE.txt";
+			break;
+		case 5:
+			filePath = "image/lvCINQ.txt";
+			break;
+		default:
+			System.out.print("System error");
+			filePath = "image/test.txt";
+			break;
+		}
+		
+		Scanner scan = new Scanner(new File(filePath));
+		int ligne = 0;
+		String line;
+		char[] charLine;
+		while (scan.hasNext()) {
+			line = scan.next();
+			charLine = line.toCharArray();
+			for (int colonne = 0; colonne < line.length(); colonne++) {
+				tab[ligne][colonne] = charLine[colonne];
+			}
+			ligne++;
+		}
+		scan.close();
 	}
 }

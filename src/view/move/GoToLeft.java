@@ -6,17 +6,16 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import view.element.Background;
-import view.element.ISprite;
 import view.element.Monster;
 import view.element.Rock;
 import view.viewInterface.IAudio;
 import view.viewInterface.IPanel;
+import view.viewInterface.ISprite;
 
 public class GoToLeft extends Move {
 
 	public GoToLeft(ISprite[][] sprites, int SET_SIZE, IPanel panel) {
 		super(sprites, SET_SIZE, panel);
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -36,7 +35,6 @@ public class GoToLeft extends Move {
 		try {
 			image = ImageIO.read(new File("image/g1.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if (nextToDiamond(sprites[ligne][colonne - 1])) {

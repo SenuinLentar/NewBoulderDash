@@ -19,13 +19,12 @@ public class TranslateMap implements ITranslateMap {
 	 *            characters
 	 * @throws IOException
 	 */
-	public TranslateMap(char[][] tab) throws IOException {
+	public TranslateMap(char[][] tab) {
 
 		/*
 		 * Fill translator with the pictures which correspond to the characters
 		 */
-		this.translator.put('#', SpriteType.UNBREAKABLE);// ('#',
-															// SpriteType.UNBREAKABLE);
+		this.translator.put('#', SpriteType.UNBREAKABLE);
 		this.translator.put('X', SpriteType.DIRT);
 		this.translator.put('_', SpriteType.BACKGROUND);
 		this.translator.put('O', SpriteType.ROCK);

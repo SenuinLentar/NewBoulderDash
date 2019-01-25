@@ -7,12 +7,12 @@ import view.element.Character;
 import view.element.Diamond;
 import view.element.Dirt;
 import view.element.Exit;
-import view.element.ISprite;
 import view.element.Monster;
 import view.element.Rock;
 import view.element.Sprite;
 import view.element.Unbreakable;
 import view.viewInterface.IMapMaker;
+import view.viewInterface.ISprite;
 
 public class MapMaker implements IMapMaker {
 	private ISprite[][] sprites = new Sprite[22][40];
@@ -38,7 +38,7 @@ public class MapMaker implements IMapMaker {
 	 */
 	public void spritesCreation(final int SET_SIZE) {
 		ligne = 0;
-		for (SpriteType sousSpitTp[] : map) {
+		for (SpriteType[] sousSpitTp : map) {
 			x = 0;
 			colonne = 0;
 			for (SpriteType SpitTp : sousSpitTp) {
@@ -119,7 +119,7 @@ public class MapMaker implements IMapMaker {
 	 * @see view.IMapMaker#setAllHasMovedToFalse(view.ISprite[][])
 	 */
 	public void setAllHasMovedToFalse(ISprite[][] sprites) {
-		for (ISprite sousSpit[] : sprites) {
+		for (ISprite[] sousSpit : sprites) {
 			for (ISprite spit : sousSpit) {
 				spit.setHasMoved(false);
 			}

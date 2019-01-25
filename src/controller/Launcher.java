@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import model.LaunchDBQuery;
@@ -12,27 +13,25 @@ import view.Window;
 import view.viewInterface.LevelObservator;
 
 public class Launcher implements LevelObservator {
-	private static CreateMenu menu;
-	private static MapMaker maker = null;
+	private CreateMenu menu;
+	private MapMaker maker = null;
 	static File music = null;
-	private final static int SET_SIZE = 16;
+	private static final int SET_SIZE = 16;
 
 	/**
 	 * Constructor of Launcher
-	 * @throws IOException 
+	 * 
+	 * @throws IOException
 	 */
 	public Launcher() throws IOException {
-		PseudoKeyListener pseudoKeyListener = new PseudoKeyListener();
-		menu = new CreateMenu(pseudoKeyListener);
+		menu = new CreateMenu();
 		menu.getObservators().add(this);
-		pseudoKeyListener.addObserver(menu);
-		pseudoKeyListener.setCreateMenu(menu);
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see view.LevelObservator#onLevelSelected(int)
+	 * @see view.LevelObservator#onLevelSelected(int, String)
 	 */
 	@Override
 	public void onLevelSelected(int level, String name) {
@@ -41,11 +40,13 @@ public class Launcher implements LevelObservator {
 			public void run() {
 				if (level == 42) {
 					new Window(menu.getPseudo());
-				}
-
-				else {
+				} else {
 					LaunchDBQuery launchDBQueries = new LaunchDBQuery(level, menu.getPseudo());
-					launchDBQueries.launchQueries();
+					try {
+						launchDBQueries.launchQueries();
+					} catch (FileNotFoundException e) {
+						e.printStackTrace();
+					}
 					TranslateMap translate;
 
 					try {
@@ -71,7 +72,6 @@ public class Launcher implements LevelObservator {
 
 					} catch (Exception e1) {
 						e1.printStackTrace();
-
 					}
 				}
 			}

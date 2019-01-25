@@ -3,10 +3,10 @@ package view;
 import java.io.File;
 
 import view.element.Background;
-import view.element.ISprite;
 import view.viewInterface.IAudio;
 import view.viewInterface.IGravity;
 import view.viewInterface.IPanel;
+import view.viewInterface.ISprite;
 
 public class Gravity implements IGravity {
 	private int ligne = 0, colonne = 0;
@@ -19,7 +19,7 @@ public class Gravity implements IGravity {
 	 */
 	public ISprite[][] makeThemFall(ISprite[][] sprites, IAudio audio, IPanel panel) {
 		ligne = 0;
-		for (ISprite sousSpit[] : sprites) {
+		for (ISprite[] sousSpit : sprites) {
 			colonne = 0;
 			for (ISprite spit : sousSpit) {
 				if ((spit.getType() == SpriteType.DIAMOND || spit.getType() == SpriteType.ROCK)) {
@@ -63,7 +63,7 @@ public class Gravity implements IGravity {
 	 */
 	public ISprite[][] makeThemSlide(ISprite[][] sprites) {
 		ligne = 0;
-		for (ISprite sousSpit[] : sprites) {
+		for (ISprite[] sousSpit : sprites) {
 			colonne = 0;
 			for (ISprite spit : sousSpit) {
 				if ((spit.getType() == SpriteType.DIAMOND || spit.getType() == SpriteType.ROCK)

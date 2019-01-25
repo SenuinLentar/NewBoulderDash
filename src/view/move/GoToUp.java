@@ -6,19 +6,16 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import view.element.Background;
-import view.element.ISprite;
 import view.element.Monster;
 import view.viewInterface.IAudio;
 import view.viewInterface.IPanel;
+import view.viewInterface.ISprite;
 
 public class GoToUp extends Move {
 
 	public GoToUp(ISprite[][] sprites, int SET_SIZE, IPanel panel) {
 		super(sprites, SET_SIZE, panel);
-		// TODO Auto-generated constructor stub
 	}
-
-
 
 	/**
 	 * Tries to move the character up, if he cross a diamond he will collect it,
@@ -36,7 +33,6 @@ public class GoToUp extends Move {
 		try {
 			image = ImageIO.read(new File("image/11.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if (nextToDiamond(sprites[ligne - 1][colonne])) {

@@ -4,6 +4,7 @@ import java.awt.Image;
 
 import model.Permeability;
 import view.SpriteType;
+import view.viewInterface.ISprite;
 
 public abstract class Sprite implements ISprite {
 	protected Image image;

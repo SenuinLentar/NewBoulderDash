@@ -3,9 +3,9 @@ package view;
 import java.io.File;
 
 import view.element.Background;
-import view.element.ISprite;
 import view.viewInterface.IAudio;
 import view.viewInterface.IMonsterMove;
+import view.viewInterface.ISprite;
 
 public class MonsterMove implements IMonsterMove {
 	private int ligne = 0, colonne = 0;
@@ -43,20 +43,20 @@ public class MonsterMove implements IMonsterMove {
 						}
 						else if (spit.getDirection() == 1) {
 							if (sprites[ligne - 1][colonne].getType() == SpriteType.BACKGROUND) {
-								MoveUp(sprites, spit);
+								moveUp(sprites, spit);
 							} else {
-								MoveDown(sprites, spit);
+								moveDown(sprites, spit);
 							}
 						} else if (spit.getDirection() == 2) {
 							if (sprites[ligne + 1][colonne].getType() == SpriteType.BACKGROUND) {
-								MoveDown(sprites, spit);
+								moveDown(sprites, spit);
 							} else {
-								MoveUp(sprites, spit);
+								moveUp(sprites, spit);
 							}
 						} else if (isSpriteNearToBackground(sprites[ligne + 1][colonne])) {
-							MoveDown(sprites, spit);
+							moveDown(sprites, spit);
 						} else if (isSpriteNearToBackground(sprites[ligne - 1][colonne])) {
-							MoveUp(sprites, spit);
+							moveUp(sprites, spit);
 						}
 					}
 				}
@@ -72,7 +72,7 @@ public class MonsterMove implements IMonsterMove {
 	 * @param spit
 	 * @return
 	 */
-	public ISprite[][] MoveUp(ISprite[][] sprites, ISprite spit) {
+	public ISprite[][] moveUp(ISprite[][] sprites, ISprite spit) {
 		sprites[ligne][colonne] = new Background(spit.getX(), spit.getY());
 		spit.setY(spit.getY() - 16);
 		spit.setHasMoved(true);
@@ -86,7 +86,7 @@ public class MonsterMove implements IMonsterMove {
 	 * @param spit
 	 * @return
 	 */
-	public ISprite[][] MoveDown(ISprite[][] sprites, ISprite spit) {
+	public ISprite[][] moveDown(ISprite[][] sprites, ISprite spit) {
 		sprites[ligne][colonne] = new Background(spit.getX(), spit.getY());
 		spit.setY(spit.getY() + 16);
 		spit.setHasMoved(true);

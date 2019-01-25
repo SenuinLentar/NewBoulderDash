@@ -4,10 +4,10 @@ import java.awt.Image;
 
 import model.Permeability;
 import view.SpriteType;
-import view.element.ISprite;
 import view.viewInterface.IAudio;
 import view.viewInterface.IMove;
 import view.viewInterface.IPanel;
+import view.viewInterface.ISprite;
 
 public class Move implements IMove {
 	protected ISprite[][] sprites;

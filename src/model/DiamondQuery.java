@@ -15,7 +15,6 @@ public class DiamondQuery extends LaunchDBQuery implements IDiamondQuery{
 	 */
 	public DiamondQuery(int level, String name) {
 		super(level, name);
-		// TODO Auto-generated constructor stub
 	}
 	
 	/* (non-Javadoc)
@@ -53,9 +52,7 @@ public class DiamondQuery extends LaunchDBQuery implements IDiamondQuery{
 			result.next();
 			finalDiamonds = result.getInt(1);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
 	}
 }

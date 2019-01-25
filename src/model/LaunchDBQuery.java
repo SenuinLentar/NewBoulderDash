@@ -1,19 +1,20 @@
 package model;
 
+import java.io.FileNotFoundException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class LaunchDBQuery {
-	protected static int level = 0, finalDiamonds = 0;
-	protected static char tab[][] = new char[22][40];
-	protected static String name = "";
-	protected static DAOConnector connectionBDD;
-	protected static MapQuery mapQuery;
-	protected static DiamondQuery diamondQuery;
-	protected static ScoreQuery ScoreQuery;
-	protected static Statement statement = null;
-	protected static ResultSet result;
+	protected int level = 0, finalDiamonds = 1;
+	protected char tab[][] = new char[22][40];
+	protected String name = "";
+	protected DAOConnector connectionBDD;
+	protected MapQuery mapQuery;
+	protected DiamondQuery diamondQuery;
+	protected ScoreQuery ScoreQuery;
+	protected Statement statement = null;
+	protected ResultSet result;
 	
 	/**
 	 * Constructor of LaunchDBQuery
@@ -21,29 +22,30 @@ public class LaunchDBQuery {
 	 * @param level
 	 */
 	public LaunchDBQuery(int level, String name){
-		LaunchDBQuery.level = level;
-		LaunchDBQuery.name = name;
+		this.level = level;
+		this.name = name;
 	}
 	
 	/**
 	 * Contains all the query we need to execute
+	 * @throws FileNotFoundException 
 	 */
-	public void launchQueries(){
-		connectionBDD = new DAOConnector(level, name);
-		connectionBDD.connection();
+	public void launchQueries() throws FileNotFoundException{
+//		connectionBDD = new DAOConnector(level, name);
+//		connectionBDD.connection();
 		
 		mapQuery = new MapQuery(level, name);
-		result = mapQuery.executeMapQuery(result, statement);
-		mapQuery.setMapQueryIntoTable(result, tab);
+		//result = mapQuery.executeMapQuery(result, statement);
+		//mapQuery.setMapQueryIntoTable(result, tab);
+		mapQuery.setMapQueryIntoTable(level, tab);
 
-		diamondQuery = new DiamondQuery(level, name);
-		try {
-			result = diamondQuery.executeDiamondQuery(result, statement);
-			diamondQuery.setQueryDiamondsInToInteger(result);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		diamondQuery = new DiamondQuery(level, name);
+//		try {
+//			result = diamondQuery.executeDiamondQuery(result, statement);
+//			diamondQuery.setQueryDiamondsInToInteger(result);
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
 	}
 	
 	public void launchScoreQuery(int score){
@@ -52,9 +54,8 @@ public class LaunchDBQuery {
 		
 		ScoreQuery = new ScoreQuery(level, name);
 		try {
-			ScoreQuery.SetScoreIntoDatabase(statement, score, level, name);
+			ScoreQuery.setScoreIntoDatabase(statement, score, level, name);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

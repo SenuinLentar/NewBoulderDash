@@ -4,17 +4,16 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.io.Serializable;
 
 import javax.swing.JPanel;
 
 import view.viewInterface.IMapMaker;
 import view.viewInterface.IPanel;
 
-public class Panel extends JPanel implements Serializable, IPanel {
+public class Panel extends JPanel implements IPanel {
 	private static final long serialVersionUID = 1L;
-	protected Image buffer[][] = new Image[22][40];
-	Font font = new Font("Courier", Font.BOLD, 15);
+	protected Image[][] buffer = new Image[22][40];
+	Font panelFont = new Font("Courier", Font.BOLD, 15);
 	private int diamondsGet = 0, score = 0;
 	private IMapMaker maker;
 	private int finalDiamonds;
@@ -37,13 +36,13 @@ public class Panel extends JPanel implements Serializable, IPanel {
 	 * 
 	 */
 	public void counterDiamond(Graphics g){
-		g.setFont(font);
+		g.setFont(panelFont);
 		g.setColor(Color.black);
 		g.drawString("Diamonds : " + diamondsGet + "/" + finalDiamonds, 10, 365);
 	}
 	
 	public void counterScore(Graphics g){
-		g.setFont(font);
+		g.setFont(panelFont);
 		g.setColor(Color.black);
 		g.drawString("Score : " + score, 10, 380);
 	}
